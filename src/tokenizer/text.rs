@@ -1,6 +1,6 @@
 //! Text tokenizer wrapper for Qwen2TokenizerFast
 
-use anyhow::{anyhow, Result};
+use anyhow::{anyhow, Error, Result};
 use std::path::Path;
 use tokenizers::Tokenizer;
 
@@ -155,7 +155,7 @@ impl TextTokenizer {
         let mut tokenizer = Tokenizer::new(bpe);
 
         // NFC normalizer
-        tokenizer.with_normalizer(Some(NFC));
+        tokenizer.with_normalizer(Some(NFC)).map_err(Error::msg)?;
 
         // Pre-tokenizer: Split on regex (Isolated) + ByteLevel
         let split = Split::new(PRETOKENIZE_REGEX, SplitDelimiterBehavior::Isolated, false)
@@ -351,7 +351,9 @@ fn add_special_tokens_from_config(tokenizer: &mut Tokenizer, config_path: &Path)
                 "Adding {} special tokens from tokenizer_config.json",
                 special_tokens.len()
             );
-            tokenizer.add_special_tokens(&special_tokens);
+            tokenizer
+                .add_special_tokens(special_tokens)
+                .map_err(Error::msg)?;
         }
     }
 
