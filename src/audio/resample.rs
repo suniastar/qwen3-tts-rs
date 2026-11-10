@@ -86,7 +86,7 @@ impl Resampler {
             } else {
                 128
             },
-            f_cutoff: 0.95,
+            f_cutoff: Some(0.95),
             interpolation: SincInterpolationType::Linear,
             oversampling_factor: if matches!(self.quality, ResampleQuality::High) {
                 256
@@ -144,7 +144,7 @@ impl Resampler {
                 .context("Failed to create input adapter")?;
 
             let result = resampler
-                .process(&input, 0, None)
+                .process(&input, None)
                 .context("Resampling failed")?;
 
             let frames = result.frames();
