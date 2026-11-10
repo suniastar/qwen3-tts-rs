@@ -23,7 +23,7 @@ all-portable = ["cpu", "cli", "hub"]
 metal = ["candle-core/metal", "candle-nn/metal", "candle-transformers/metal"]
 accelerate = ["candle-core/accelerate", "candle-nn/accelerate", "candle-transformers/accelerate"]
 mkl = ["candle-core/mkl", "candle-nn/mkl", "candle-transformers/mkl"]
-cuda = ["candle-core/cuda", "candle-nn/cuda", "candle-transformers/cuda"]
+cuda = ["candle-core/cuda", "candle-nn/cuda", "candle-transformers/cuda", "dep:cudaforge"]
 flash-attn = ["cuda", "dep:candle-flash-attn"]
 profiling = ["dep:tracing-chrome"]
 
@@ -75,6 +75,9 @@ approx = "0.5.1"
 tempfile = "3.27.0"
 ndarray = "0.17.2"
 ndarray-npy = "0.10.0"
+
+[build-dependencies]
+cudaforge = {version = "0.1.5", optional = true}
 
 [[bin]]
 name = "generate_audio"

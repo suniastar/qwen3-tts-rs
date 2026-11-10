@@ -96,7 +96,7 @@ impl FusedRmsNorm {
 }
 
 #[cfg(feature = "cuda")]
-static FUSED_RESIDUAL_RMSNORM_PTX: &str = include_str!("../../kernels/fused_residual_rmsnorm.ptx");
+static FUSED_RESIDUAL_RMSNORM_PTX: &str = include_str!(concat!(env!("OUT_DIR"), "/fused_residual_rmsnorm.ptx"));
 
 #[cfg(feature = "cuda")]
 struct FusedResidualRmsNormOp {
