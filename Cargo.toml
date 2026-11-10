@@ -110,3 +110,12 @@ opt-level = 3
 inherits = "release"
 debug = true
 lto = false
+
+[patch.crates-io]
+candle-core = { git = "https://github.com/suniastar/candle.git", rev = "ae319b7f4e41dffcd0ae1c3fecafec5eaf16d2c9" }
+candle-flash-attn = { git = "https://github.com/suniastar/candle.git", rev = "ae319b7f4e41dffcd0ae1c3fecafec5eaf16d2c9" }
+candle-kernels = { git = "https://github.com/suniastar/candle.git", rev = "ae319b7f4e41dffcd0ae1c3fecafec5eaf16d2c9" }
+candle-metal-kernels = { git = "https://github.com/suniastar/candle.git", rev = "ae319b7f4e41dffcd0ae1c3fecafec5eaf16d2c9" }
+candle-nn = { git = "https://github.com/suniastar/candle.git", rev = "ae319b7f4e41dffcd0ae1c3fecafec5eaf16d2c9" }
+candle-transformers = { git = "https://github.com/suniastar/candle.git", rev = "ae319b7f4e41dffcd0ae1c3fecafec5eaf16d2c9" }
+candle-ug = { git = "https://github.com/suniastar/candle.git", rev = "ae319b7f4e41dffcd0ae1c3fecafec5eaf16d2c9" }

@@ -1434,11 +1434,7 @@ pub fn codes_to_tensor(codes: &[Vec<u32>], device: &Device) -> Result<Tensor> {
 ///
 /// Returns `BF16` for CUDA/Metal (lower memory, faster attention) and `F32` for CPU.
 pub fn compute_dtype_for_device(device: &Device) -> DType {
-    if device.is_cuda() || device.is_metal() {
-        DType::BF16
-    } else {
-        DType::F32
-    }
+    device.bf16_default_to_f32()
 }
 
 /// Force the GPU to complete all pending work before returning.
